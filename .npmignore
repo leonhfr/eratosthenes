@@ -1,0 +1,17 @@
+/src
+/node_modules
+/coverage
+.serverless
+
+*.test.d.ts
+*.test.js
+*.md
+
+tsconfig.json
+tsconfig.test.json
+
+/docs
+/config
+serverless.yml
+
+junit.xml
