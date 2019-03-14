@@ -1,6 +1,6 @@
 {
   "name": "@scenicroutes/eratosthenes",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Eratosthenes: Library for Scenic Routes",
   "scripts": {
     "build": "tsc",
