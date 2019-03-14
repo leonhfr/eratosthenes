@@ -1,3 +1,9 @@
+# Build directory
+build
+
+# Serverless Directories
+.serverless
+
 # Logs
 logs
 *.log

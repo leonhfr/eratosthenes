@@ -1,0 +1,76 @@
+{
+  "name": "@scenicroutes/eratosthenes",
+  "version": "0.0.0",
+  "description": "Eratosthenes: Library for Scenic Routes",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf build",
+    "prepublishOnly": "npm run clean && npm run build",
+    "release": "np --no-cleanup",
+    "ci": "jest --ci none --testPathPattern='src/' --detectOpenHandles --forceExit true --maxWorkers 2 --collectCoverage",
+    "pretest": "tsc -p tsconfig.test.json",
+    "test": "jest src --collectCoverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scenicroutes/eratosthenes,git"
+  },
+  "bugs": {
+    "url": "https://github.com/scenicroutes/eratosthenes/issues"
+  },
+  "homepage": "https://github.com/scenicroutes/eratosthenes#readme",
+  "author": {
+    "name": "Leon Hollender",
+    "email": "hello@leonh.fr"
+  },
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "aws-sdk": "^2.420.0",
+    "debug": "^4.0.1",
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.17",
+    "@types/debug": "0.0.31",
+    "@types/jest": "^23.3.12",
+    "@types/node": "^10.12.0",
+    "jest": "^23.6.0",
+    "jest-junit": "^5.2.0",
+    "prettier": "^1.15.3",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/build/",
+      "<rootDir>/node_modules/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "reporters": [
+      "jest-junit"
+    ]
+  }
+}
