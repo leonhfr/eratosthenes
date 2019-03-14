@@ -1,0 +1,32 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    branches:
+      only:
+        - master
+        - /feature\/.+/
+        - /improvement\/.+/
+        - /bug\/.+/
+    docker:
+      - image: circleci/node:8.10
+        environment:
+          JEST_JUNIT_OUTPUT: 'reports/junit/js-test-results.xml'
+    working_directory: ~/eratosthenes
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run: npm run ci
+      - store_artifacts:
+          path: reports/junit
+      - store_test_results:
+          path: reports/junit

@@ -1,2 +1,3 @@
-# eratosthenes
+# Eratosthenes
+
 Library for Scenic Routes
