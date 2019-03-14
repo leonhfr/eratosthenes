@@ -1,6 +1,0 @@
-<testsuites name="jest tests" tests="1" failures="0" time="5.198">
-  <testsuite name="index" errors="0" failures="0" skipped="0" timestamp="2019-03-14T19:09:18" time="4.432" tests="1">
-    <testcase classname="index should expose the expected entries" name="index should expose the expected entries" time="0.004">
-    </testcase>
-  </testsuite>
-</testsuites>
