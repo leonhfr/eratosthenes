@@ -56,25 +56,33 @@ export class DynamoDB {
   /*istanbul ignore next*/
   static async scan<T>(
     input: AWS.DynamoDB.DocumentClient.ScanInput
-  ): Promise<AWS.DynamoDB.DocumentClient.ScanOutput> {
+  ): Promise<MultipleItemsOutput<T>> {
     debugVerbose(`scan input: %j`, input);
     const response: AWS.DynamoDB.DocumentClient.ScanOutput = await this.client
       .scan(input)
       .promise();
     debugVerbose(`scan response: %j`, response);
-    return response as { Items: Array<T> };
+    return response as MultipleItemsOutput<T>;
   }
 
   // ignoring wrapping function
   /*istanbul ignore next*/
   static async query<T>(
     input: AWS.DynamoDB.DocumentClient.QueryInput
-  ): Promise<AWS.DynamoDB.DocumentClient.QueryOutput> {
+  ): Promise<MultipleItemsOutput<T>> {
     debugVerbose(`query input: %j`, input);
     const response: AWS.DynamoDB.DocumentClient.QueryOutput = await this.client
       .query(input)
       .promise();
     debugVerbose(`query response: %j`, response);
-    return response as { Items: Array<T> };
+    return response as MultipleItemsOutput<T>;
   }
 }
+
+// Definition.
+type MultipleItemsOutput<T> = {
+  Items?: Array<T>;
+  Count?: number;
+  ScannedCount?: number;
+  LastEvaluatedKey?: AWS.DynamoDB.DocumentClient.Key;
+};
