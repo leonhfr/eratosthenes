@@ -1,6 +1,7 @@
 /src
 /node_modules
 /coverage
+.circleci
 .serverless
 
 *.test.d.ts
