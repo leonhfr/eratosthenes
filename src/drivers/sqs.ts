@@ -5,7 +5,7 @@ import * as AWS from 'aws-sdk';
 // Code.
 const debugVerbose = debug('eratosthenes:verbose:drivers:sqs');
 
-export class SQS {
+export class SqsDriver {
   static client = new AWS.SQS();
 
   // ignoring wrapping function

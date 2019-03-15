@@ -5,7 +5,7 @@ import * as AWS from 'aws-sdk';
 // Code.
 const debugVerbose = debug('eratosthenes:verbose:drivers:dynamodb');
 
-export class DynamoDB {
+export class DynamoDbDriver {
   static client = new AWS.DynamoDB.DocumentClient();
 
   // ignoring wrapping function

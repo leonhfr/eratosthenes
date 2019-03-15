@@ -5,7 +5,7 @@ import * as AWS from 'aws-sdk';
 // Code.
 const debugVerbose = debug('eratosthenes:verbose:drivers:lambda');
 
-export class Lambda {
+export class LambdaDriver {
   static client = new AWS.Lambda();
 
   // ignoring wrapping function
