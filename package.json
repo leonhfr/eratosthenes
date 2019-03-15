@@ -37,7 +37,6 @@
     "@types/jest": "^23.3.12",
     "@types/node": "^10.12.0",
     "jest": "^23.6.0",
-    "jest-junit": "^5.2.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.15.3",
     "rimraf": "^2.6.2",
@@ -74,9 +73,6 @@
         "lines": 100,
         "statements": 100
       }
-    },
-    "reporters": [
-      "jest-junit"
-    ]
+    }
   }
 }
