@@ -2,9 +2,9 @@
 
 exports[`index should expose the expected entries 1`] = `
 Object {
-  "DynamoDB": [Function],
-  "Lambda": [Function],
-  "S3": [Function],
-  "SQS": [Function],
+  "DynamoDbDriver": [Function],
+  "LambdaDriver": [Function],
+  "S3Driver": [Function],
+  "SqsDriver": [Function],
 }
 `;

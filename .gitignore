@@ -1,6 +1,5 @@
 # Build directory
 build
-junit.xml
 
 # Serverless Directories
 .serverless
