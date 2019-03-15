@@ -13,8 +13,6 @@ jobs:
         - /bug\/.+/
     docker:
       - image: circleci/node:8.10
-        environment:
-          JEST_JUNIT_OUTPUT: 'reports/junit/js-test-results.xml'
     working_directory: ~/eratosthenes
     steps:
       - checkout
