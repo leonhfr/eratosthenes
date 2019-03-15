@@ -1,4 +1,4 @@
-export { DynamoDB } from './dynamodb';
-export { Lambda } from './lambda';
-export { S3 } from './s3';
-export { SQS } from './sqs';
+export { DynamoDbDriver } from './dynamodb';
+export { LambdaDriver } from './lambda';
+export { S3Driver } from './s3';
+export { SqsDriver } from './sqs';

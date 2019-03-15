@@ -5,7 +5,7 @@ import * as AWS from 'aws-sdk';
 // Code.
 const debugVerbose = debug('eratosthenes:verbose:drivers:s3');
 
-export class S3 {
+export class S3Driver {
   static client = new AWS.S3();
 
   // ignoring wrapping function
