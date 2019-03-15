@@ -56,25 +56,25 @@ export class DynamoDB {
   /*istanbul ignore next*/
   static async scan<T>(
     input: AWS.DynamoDB.DocumentClient.ScanInput
-  ): Promise<Array<T>> {
+  ): Promise<AWS.DynamoDB.DocumentClient.ScanOutput> {
     debugVerbose(`scan input: %j`, input);
     const response: AWS.DynamoDB.DocumentClient.ScanOutput = await this.client
       .scan(input)
       .promise();
     debugVerbose(`scan response: %j`, response);
-    return response.Items as Array<T>;
+    return response as { Items: Array<T> };
   }
 
   // ignoring wrapping function
   /*istanbul ignore next*/
   static async query<T>(
     input: AWS.DynamoDB.DocumentClient.QueryInput
-  ): Promise<Array<T>> {
+  ): Promise<AWS.DynamoDB.DocumentClient.QueryOutput> {
     debugVerbose(`query input: %j`, input);
     const response: AWS.DynamoDB.DocumentClient.QueryOutput = await this.client
       .query(input)
       .promise();
     debugVerbose(`query response: %j`, response);
-    return response.Items as Array<T>;
+    return response as { Items: Array<T> };
   }
 }
