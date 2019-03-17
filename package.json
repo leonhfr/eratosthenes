@@ -27,7 +27,9 @@
   },
   "license": "GPL-3.0-only",
   "dependencies": {
+    "@turf/turf": "^5.1.6",
     "aws-sdk": "^2.420.0",
+    "axios": "^0.18.0",
     "debug": "^4.0.1",
     "tslib": "^1.9.3"
   },
@@ -68,10 +70,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
+        "branches": 7.69,
+        "functions": 13.33,
+        "lines": 35.03,
+        "statements": 36.42
       }
     }
   }
