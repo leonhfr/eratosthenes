@@ -1,0 +1,21 @@
+service: erathostenes
+
+frameworkVersion: '>=1.0.0 <2.0.0'
+
+provider: aws
+
+functions:
+
+resources:
+  - ${file(config/dynamodb-area.json)}
+  - ${file(config/dynamodb-job.json)}
+
+package:
+  exclude:
+    - src/**
+    - config/**
+    - coverage/**
+    - docs/**
+    - build/**/*.d.ts
+    - build/**/*.test.js
+    - build/scripts/**

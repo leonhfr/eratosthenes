@@ -1,0 +1,16 @@
+{
+  "Resources": {
+    "AreaDynamoDbTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "BillingMode": "PAY_PER_REQUEST",
+        "KeySchema": [{ "AttributeName": "id", "KeyType": "HASH" }],
+        "AttributeDefinitions": [
+          { "AttributeName": "id", "AttributeType": "S" }
+        ],
+        "TableName": "area"
+      }
+    }
+  }
+}
