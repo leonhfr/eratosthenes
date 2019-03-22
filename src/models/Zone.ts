@@ -14,11 +14,11 @@ const debugVerbose = debug('eratosthenes:verbose:zone');
 export class ZoneModel {
   static async query(area: string): Promise<Types.Result<Zone, Error> | Error> {
     const request: AWS.DynamoDB.DocumentClient.QueryInput = {
-      TableName: 'area',
+      TableName: 'zone',
       IndexName: 'area-index',
       KeyConditionExpression: 'area = :v1',
       ExpressionAttributeValues: {
-        ':v1': { S: area },
+        ':v1': area,
       },
     };
     debugVerbose(`query: requesting %o`, request);
@@ -59,17 +59,17 @@ export class ZoneModel {
       : undefined;
 
     const request: AWS.DynamoDB.DocumentClient.PutItemInput = {
-      TableName: 'area',
+      TableName: 'zone',
       Item: {
-        id: { S: zone.id },
-        area: { S: zone.area },
-        bbox: { M: bboxMap },
+        id: zone.id,
+        area: zone.area,
+        bbox: bboxMap,
       },
       ReturnValues: 'ALL_OLD',
     };
 
     if (zoneMap) {
-      request.Item.zone = { M: zoneMap };
+      request.Item.zone = zoneMap;
     }
 
     debugVerbose(`put: request %o`, request);
