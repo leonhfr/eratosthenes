@@ -63,8 +63,8 @@ export class AreaModel {
       Key: { id },
       UpdateExpression: updateExpression,
       ExpressionAttributeValues: {
-        ':time': { N: lastScheduledAt },
-        ':flag': { BOOL: zonesComputed },
+        ':time': lastScheduledAt,
+        ':flag': zonesComputed,
       },
       ReturnValues: 'ALL_NEW',
     };

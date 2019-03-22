@@ -10,7 +10,7 @@
           { "AttributeName": "id", "AttributeType": "S" },
           { "AttributeName": "area", "AttributeType": "S" }
         ],
-        "LocalSecondaryIndexes": [
+        "GlobalSecondaryIndexes": [
           {
             "IndexName": "area-index",
             "KeySchema": [
