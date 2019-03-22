@@ -68,7 +68,7 @@ export class AreaModel {
       },
       ReturnValues: 'ALL_NEW',
     };
-    debugVerbose(`updateItem: input %o`, request);
+    debugVerbose(`updateItem: request %o`, request);
 
     try {
       const response: AWS.DynamoDB.DocumentClient.UpdateItemOutput = await DynamoDB.update(

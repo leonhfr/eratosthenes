@@ -3,5 +3,6 @@
 exports[`models should expose the expected entries 1`] = `
 Object {
   "AreaModel": [Function],
+  "ZoneModel": [Function],
 }
 `;
