@@ -3,7 +3,7 @@ import * as AWSLambda from 'aws-lambda';
 import * as debug from 'debug';
 
 // Internal.
-import { Erathostenes } from '../index';
+import { Eratosthenes } from '../index';
 
 // Code.
 const debugError = debug('eratosthenes:error:test');
@@ -18,10 +18,9 @@ export const main = async (
     debugVerbose(`event: %j`, event);
     debugVerbose(`context: %j`, context);
 
-    // AREA
-    debugVerbose(`testing Area.model`);
+    debugVerbose(`testing Area`);
 
-    const listResponse = await Erathostenes.AreaModel.list();
+    const listResponse = await Eratosthenes.AreaModel.list();
 
     debugVerbose(`list: %o`, listResponse);
 
@@ -30,7 +29,7 @@ export const main = async (
 
       const { id, file, lastScheduledAt, zonesComputed } = area;
 
-      const update = await Erathostenes.AreaModel.updateItem(
+      const update = await Eratosthenes.AreaModel.updateItem(
         id,
         Date.now(),
         !zonesComputed
@@ -38,7 +37,7 @@ export const main = async (
 
       debugVerbose(`update: %o`, update);
 
-      const rollback = await Erathostenes.AreaModel.updateItem(
+      const rollback = await Eratosthenes.AreaModel.updateItem(
         id,
         lastScheduledAt,
         zonesComputed
@@ -46,7 +45,7 @@ export const main = async (
 
       debugVerbose(`rollback: %o`, rollback);
 
-      const geojson = await Erathostenes.AreaModel.getAreaGeojson(file);
+      const geojson = await Eratosthenes.AreaModel.getAreaGeojson(file);
 
       debugVerbose(`geojson: %o`, geojson);
     } else {

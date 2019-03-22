@@ -1,0 +1,31 @@
+{
+  "Resources": {
+    "ZoneDynamoDbTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "BillingMode": "PAY_PER_REQUEST",
+        "KeySchema": [{ "AttributeName": "id", "KeyType": "HASH" }],
+        "AttributeDefinitions": [
+          { "AttributeName": "id", "AttributeType": "S" },
+          { "AttributeName": "area", "AttributeType": "S" }
+        ],
+        "GlobalSecondaryIndexes": [
+          {
+            "IndexName": "area-index",
+            "KeySchema": [
+              {
+                "AttributeName": "area",
+                "KeyType": "HASH"
+              }
+            ],
+            "Projection": {
+              "ProjectionType": "ALL"
+            }
+          }
+        ],
+        "TableName": "zone"
+      }
+    }
+  }
+}

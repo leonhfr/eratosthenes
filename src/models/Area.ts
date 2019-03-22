@@ -63,12 +63,12 @@ export class AreaModel {
       Key: { id },
       UpdateExpression: updateExpression,
       ExpressionAttributeValues: {
-        ':time': { N: lastScheduledAt },
-        ':flag': { BOOL: zonesComputed },
+        ':time': lastScheduledAt,
+        ':flag': zonesComputed,
       },
       ReturnValues: 'ALL_NEW',
     };
-    debugVerbose(`updateItem: input %o`, request);
+    debugVerbose(`updateItem: request %o`, request);
 
     try {
       const response: AWS.DynamoDB.DocumentClient.UpdateItemOutput = await DynamoDB.update(

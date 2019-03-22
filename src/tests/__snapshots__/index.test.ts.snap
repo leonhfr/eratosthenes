@@ -2,8 +2,9 @@
 
 exports[`index should expose the expected entries 1`] = `
 Object {
-  "Erathostenes": Object {
+  "Eratosthenes": Object {
     "AreaModel": [Function],
+    "ZoneModel": [Function],
   },
 }
 `;
