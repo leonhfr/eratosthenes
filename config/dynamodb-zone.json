@@ -7,7 +7,22 @@
         "BillingMode": "PAY_PER_REQUEST",
         "KeySchema": [{ "AttributeName": "id", "KeyType": "HASH" }],
         "AttributeDefinitions": [
-          { "AttributeName": "id", "AttributeType": "S" }
+          { "AttributeName": "id", "AttributeType": "S" },
+          { "AttributeName": "area", "AttributeType": "S" }
+        ],
+        "LocalSecondaryIndexes": [
+          {
+            "IndexName": "area-index",
+            "KeySchema": [
+              {
+                "AttributeName": "area",
+                "KeyType": "HASH"
+              }
+            ],
+            "Projection": {
+              "ProjectionType": "ALL"
+            }
+          }
         ],
         "TableName": "zone"
       }

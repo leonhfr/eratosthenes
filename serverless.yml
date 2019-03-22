@@ -38,10 +38,13 @@ provider:
 functions:
   test-area:
     handler: build/lambdas/area.main
+  test-zone:
+    handler: build/lambdas/zone.main
 
 resources:
   - ${file(config/dynamodb-area.json)}
   - ${file(config/dynamodb-job.json)}
+  - ${file(config/dynamodb-zone.json)}
 
 package:
   exclude:
