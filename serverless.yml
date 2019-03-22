@@ -1,10 +1,43 @@
-service: erathostenes
+service: eratosthenes
 
 frameworkVersion: '>=1.0.0 <2.0.0'
 
-provider: aws
-
+custom:
+  account: ${opt:account}
+  region: ${opt:region}
+  timeout: ${opt:timeout}
+  debug: ${opt:debug}
+  prune:
+    automatic: true
+    number: 3
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ${self:custom.region}
+  timeout: ${self:custom.timeout}
+  memorySize: 256
+  logRetentionInDays: 7
+  environment:
+    ACCOUNT: ${self:custom.account}
+    TIMEOUT: ${self:custom.timeout}
+    DEBUG: ${self:custom.debug}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - 'lambda:*'
+      Resource: '*'
+    - Effect: 'Allow'
+      Action:
+        - 'dynamodb:*'
+      Resource: '*'
+    - Effect: 'Allow'
+      Action:
+        - 's3:*'
+      Resource:
+        - arn:aws:s3:::scenicroutes-*
 functions:
+  test-area:
+    handler: build/lambdas/area.main
 
 resources:
   - ${file(config/dynamodb-area.json)}

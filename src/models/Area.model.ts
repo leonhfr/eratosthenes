@@ -28,6 +28,7 @@ export class AreaModel {
       const response: AWS.DynamoDB.DocumentClient.ScanOutput = await DynamoDB.scan(
         request
       ).promise();
+
       debugVerbose(`list: response %o`, response);
 
       if (!response.Items) {
@@ -47,8 +48,35 @@ export class AreaModel {
     }
   }
 
-  static async updateItem() {
-    // TODO: implement updateItem
+  static async updateItem(
+    id: string,
+    lastScheduledAt: number,
+    zonesComputed: boolean
+  ): Promise<AWS.DynamoDB.AttributeMap | undefined | Error> {
+    const request: AWS.DynamoDB.DocumentClient.UpdateItemInput = {
+      TableName: 'area',
+      Key: { id },
+      UpdateExpression: 'set lastScheduledAt = :time, zonesComputed = :flag',
+      ExpressionAttributeValues: {
+        ':time': { N: lastScheduledAt },
+        ':flag': { BOOL: zonesComputed },
+      },
+      ReturnValues: 'ALL_NEW',
+    };
+    debugVerbose(`updateItem: input %o`, request);
+
+    try {
+      const response: AWS.DynamoDB.DocumentClient.UpdateItemOutput = await DynamoDB.update(
+        request
+      ).promise();
+
+      debugVerbose(`updateItem: response %o`, response);
+
+      return response.Attributes;
+    } catch (err) {
+      debugError(`updateItem failed: %s`, err.message);
+      return err;
+    }
   }
 
   static async getAreaGeojson(
