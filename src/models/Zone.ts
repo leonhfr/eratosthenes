@@ -15,7 +15,11 @@ export class ZoneModel {
   static async query(area: string): Promise<Types.Result<Zone, Error> | Error> {
     const request: AWS.DynamoDB.DocumentClient.QueryInput = {
       TableName: 'area',
-      IndexName: area,
+      IndexName: 'area-index',
+      KeyConditionExpression: 'area = :v1',
+      ExpressionAttributeValues: {
+        ':v1': { S: area },
+      },
     };
     debugVerbose(`query: requesting %o`, request);
 
