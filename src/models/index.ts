@@ -1,1 +1,1 @@
-export { AreaModel } from './Area.model';
+export { AreaModel } from './Area';

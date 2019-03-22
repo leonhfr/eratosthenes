@@ -51,12 +51,17 @@ export class AreaModel {
   static async updateItem(
     id: string,
     lastScheduledAt: number,
-    zonesComputed: boolean
+    zonesComputed?: boolean
   ): Promise<AWS.DynamoDB.AttributeMap | undefined | Error> {
+    const updateExpression =
+      zonesComputed !== undefined
+        ? `set lastScheduledAt = :time, zonesComputed = :flag`
+        : `set lastScheduledAt = :time`;
+
     const request: AWS.DynamoDB.DocumentClient.UpdateItemInput = {
       TableName: 'area',
       Key: { id },
-      UpdateExpression: 'set lastScheduledAt = :time, zonesComputed = :flag',
+      UpdateExpression: updateExpression,
       ExpressionAttributeValues: {
         ':time': { N: lastScheduledAt },
         ':flag': { BOOL: zonesComputed },
