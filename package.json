@@ -29,7 +29,7 @@
   },
   "license": "GPL-3.0-only",
   "dependencies": {
-    "@scenicroutes/wittgenstein": "0.0.4",
+    "@scenicroutes/wittgenstein": "0.0.5",
     "@turf/helpers": "^6.1.4",
     "@turf/invariant": "^6.1.2",
     "aws-sdk": "^2.420.0",
@@ -76,8 +76,8 @@
       "global": {
         "branches": 8.7,
         "functions": 9.09,
-        "lines": 29.21,
-        "statements": 30.77
+        "lines": 26.36,
+        "statements": 28.03
       }
     }
   }

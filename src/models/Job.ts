@@ -48,12 +48,57 @@ export class JobModel {
     }
   }
 
-  static async put() {
-    // Put job
+  static async put(
+    job: Job
+  ): Promise<AWS.DynamoDB.AttributeMap | undefined | Error> {
+    const zoneMap = JSON.parse(JSON.stringify(job.zone));
+
+    const request: AWS.DynamoDB.DocumentClient.PutItemInput = {
+      TableName: 'job',
+      Item: {
+        id: job.id,
+        page: job.page,
+        zone: zoneMap,
+      },
+      ReturnValues: 'ALL_OLD',
+    };
+
+    debugVerbose(`put: request %o`, request);
+
+    try {
+      const response: AWS.DynamoDB.DocumentClient.PutItemOutput = await DynamoDB.put(
+        request
+      ).promise();
+      debugVerbose(`put: response %o`, response);
+
+      return response.Attributes;
+    } catch (err) {
+      debugError(`put failed: %s`, err.message);
+      return err;
+    }
   }
 
-  static async delete() {
-    // Delete job
+  static async delete(
+    id: string
+  ): Promise<AWS.DynamoDB.AttributeMap | undefined | Error> {
+    const request: AWS.DynamoDB.DocumentClient.DeleteItemInput = {
+      TableName: 'job',
+      Key: { id },
+    };
+    debugVerbose(`delete: request %o`, request);
+
+    try {
+      const response: AWS.DynamoDB.DocumentClient.DeleteItemOutput = await DynamoDB.delete(
+        request
+      ).promise();
+
+      debugVerbose(`delete: response %o`, response);
+
+      return response.Attributes;
+    } catch (err) {
+      debugError(`delete failed: %s`, err.message);
+      return err;
+    }
   }
 
   static async publish() {
