@@ -19,6 +19,7 @@ provider:
   logRetentionInDays: 7
   environment:
     ACCOUNT: ${self:custom.account}
+    REGION: ${self:custom.region}
     TIMEOUT: ${self:custom.timeout}
     DEBUG: ${self:custom.debug}
   iamRoleStatements:
@@ -35,9 +36,15 @@ provider:
         - 's3:*'
       Resource:
         - arn:aws:s3:::scenicroutes-*
+    - Effect: 'Allow'
+      Action:
+        - 'sqs:*'
+      Resource: arn:aws:sqs:${self:custom.region}:*:*
 functions:
   test-area:
     handler: build/lambdas/area.main
+  test-job:
+    handler: build/lambdas/job.main
   test-zone:
     handler: build/lambdas/zone.main
 
