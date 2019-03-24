@@ -29,7 +29,7 @@
   },
   "license": "GPL-3.0-only",
   "dependencies": {
-    "@scenicroutes/wittgenstein": "0.0.5",
+    "@scenicroutes/wittgenstein": "0.0.6",
     "@turf/helpers": "^6.1.4",
     "@turf/invariant": "^6.1.2",
     "aws-sdk": "^2.420.0",
@@ -74,7 +74,7 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 6.67,
+        "branches": 6.25,
         "functions": 7.14,
         "lines": 22.22,
         "statements": 23.72

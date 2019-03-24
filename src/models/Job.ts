@@ -58,6 +58,8 @@ export class JobModel {
       TableName: 'job',
       Item: {
         id: job.id,
+        minUploadDate: job.minUploadDate,
+        maxUploadDate: job.maxUploadDate,
         page: job.page,
         zone: zoneMap,
       },
@@ -154,9 +156,9 @@ export class JobModel {
   private static parseRecord(record: AWSLambda.SQSRecord): Job | Error {
     try {
       const input = JSON.parse(record.body);
-      const { id, page, zone } = input;
-      if (id && page && zone) {
-        return Job.create({ id, page, zone });
+      const { id, minUploadDate, maxUploadDate, page, zone } = input;
+      if (id && minUploadDate && maxUploadDate && page && zone) {
+        return Job.create({ id, minUploadDate, maxUploadDate, page, zone });
       }
       return new Error(`Cannot parse job: ${record.body}`);
     } catch (err) {
