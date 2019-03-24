@@ -5,6 +5,7 @@ Object {
   "Eratosthenes": Object {
     "AreaModel": [Function],
     "JobModel": [Function],
+    "PhotoModel": [Function],
     "ZoneModel": [Function],
   },
 }
