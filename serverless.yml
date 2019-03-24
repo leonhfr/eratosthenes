@@ -19,6 +19,7 @@ provider:
   logRetentionInDays: 7
   environment:
     ACCOUNT: ${self:custom.account}
+    REGION: ${self:custom.region}
     TIMEOUT: ${self:custom.timeout}
     DEBUG: ${self:custom.debug}
   iamRoleStatements:
