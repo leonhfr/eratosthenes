@@ -1,6 +1,6 @@
 {
   "name": "@scenicroutes/eratosthenes",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Eratosthenes: Library for Scenic Routes",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
