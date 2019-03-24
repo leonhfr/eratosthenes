@@ -51,6 +51,7 @@ functions:
 resources:
   - ${file(config/dynamodb-area.json)}
   - ${file(config/dynamodb-job.json)}
+  - ${file(config/dynamodb-photo.json)}
   - ${file(config/dynamodb-zone.json)}
 
 package:
