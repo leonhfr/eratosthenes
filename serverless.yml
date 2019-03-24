@@ -35,9 +35,15 @@ provider:
         - 's3:*'
       Resource:
         - arn:aws:s3:::scenicroutes-*
+    - Effect: 'Allow'
+      Action:
+        - 'sqs:*'
+      Resource: arn:aws:sqs:*
 functions:
   test-area:
     handler: build/lambdas/area.main
+  test-job:
+    handler: build/lambdas/job.main
   test-zone:
     handler: build/lambdas/zone.main
 

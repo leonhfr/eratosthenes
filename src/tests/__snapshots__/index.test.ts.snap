@@ -4,6 +4,7 @@ exports[`index should expose the expected entries 1`] = `
 Object {
   "Eratosthenes": Object {
     "AreaModel": [Function],
+    "JobModel": [Function],
     "ZoneModel": [Function],
   },
 }
