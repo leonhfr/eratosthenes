@@ -54,6 +54,8 @@ export const main = async (
 
 export const createMockJob = () => ({
   id: '7debb0f5-e53a-4df4-8c43-c96db89084f1',
+  minUploadDate: 0,
+  maxUploadDate: 100000,
   page: 1,
   zone: createMockZone(),
 });
