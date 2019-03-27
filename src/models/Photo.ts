@@ -33,7 +33,7 @@ export class PhotoModel {
     } = photo;
 
     const request: AWS.DynamoDB.DocumentClient.PutItemInput = {
-      TableName: 'zone',
+      TableName: 'photo',
       Item: {
         id,
         owner,
